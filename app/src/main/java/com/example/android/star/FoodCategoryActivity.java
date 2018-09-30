@@ -8,16 +8,16 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-public class DrinkCategoryActivity extends Activity {
+public class FoodCategoryActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_drink_category);
-        ArrayAdapter<Drink> listAdapter = new ArrayAdapter<>(
-                this, android.R.layout.simple_list_item_1, Drink.drinks);
-        ListView listDrinks = (ListView) findViewById(R.id.list_foods);
-        listDrinks.setAdapter(listAdapter);
+        setContentView(R.layout.activity_food_category);
+        ArrayAdapter<Food> listAdapter = new ArrayAdapter<>(
+                this, android.R.layout.simple_list_item_1, Food.foods);
+        ListView listFoods = (ListView) findViewById(R.id.list_foods);
+        listFoods.setAdapter(listAdapter);
 
         //Create the listener
         AdapterView.OnItemClickListener itemClickListener =
@@ -28,14 +28,14 @@ public class DrinkCategoryActivity extends Activity {
                                             int position,
                                             long id) {
                         //Pass the drink the user clicks on to DrinkActivity
-                        Intent intent = new Intent(DrinkCategoryActivity.this,
-                                DrinkActivity.class);
-                        intent.putExtra(DrinkActivity.EXTRA_DRINKID, (int) id);
+                        Intent intent = new Intent(FoodCategoryActivity.this,
+                                FoodActivity.class);
+                        intent.putExtra(FoodActivity.EXTRA_FOODID, (int) id);
                         startActivity(intent);
                     }
                 };
 
         //Assign the listener to the list view
-        listDrinks.setOnItemClickListener(itemClickListener);
+        listFoods.setOnItemClickListener(itemClickListener);
     }
 }
